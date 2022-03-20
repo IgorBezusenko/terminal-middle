@@ -6,12 +6,19 @@ import "./Terminal.css";
 import { TerminalInput } from "./TerminalInput";
 import { TerminalHeader } from "./TrminalHeader";
 import { TerminalHistory } from "./TerminalHistory";
+import TerminalError from "./TerminalError";
 
 const Terminal = () => {
-  const { history, path, currentCommand } = useSelector(
+  const { history, buffer, currentCommand, error } = useSelector(
     (state) => state.terminalReducer
   );
-  const { requestCommand, nextCommand, prevCommand } = useAction();
+  const {
+    requestCommand,
+    nextCommand,
+    prevCommand,
+    clearHistory,
+    setError,
+  } = useAction();
   const [input, setInput] = useState("");
   const inputRef = useRef(null);
 
@@ -35,7 +42,7 @@ const Terminal = () => {
   const handleKeyDown = (e) => {
     switch (e.key) {
       case "Enter": {
-        if (input.trim()) requestCommand(input);
+        input.trim() === "clear" ? clearHistory() : requestCommand(input);
         setInput("");
         break;
       }
@@ -53,12 +60,13 @@ const Terminal = () => {
     }
   };
 
-  // useEffect(() => {
-  //   requestCommand("help");
-  // }, []);
+  const onCloseError = () => {
+    setError("");
+  };
 
   return (
     <div className="terminal" onClick={handleFocus}>
+      {error && <TerminalError error={error} onCloseError={onCloseError} />}
       <TerminalHeader />
       <TerminalHistory history={history} />
       <TerminalInput
