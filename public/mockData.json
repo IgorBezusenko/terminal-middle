@@ -1,0 +1,19 @@
+{
+  "clear": {
+    "command": "clear",
+    "answer": "clear"
+  },
+  "ls": {
+    "command": "ls",
+    "answer": "bin/   Cmder.exe*   config/   icons/   LICENSE   opt/   vendor/"
+  },
+  "pwd": {
+    "command": "pwd",
+    "answer": "C:\\User"
+  },
+  "help": {
+    "command": "help",
+    "answer": "help pwd ls"
+  }
+
+}

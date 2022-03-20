@@ -1,0 +1,45 @@
+.terminal {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 80vw;
+  height: 60vh;
+  background: #300a24;
+  color: #ffffff;
+  font-size: 16px;
+  line-height: inherit;
+  overflow: auto;
+}
+
+.terminal__header {
+  padding: 5px 10px;
+  background: #44433f;
+}
+.terminal__history {
+  margin: 0 0 10px 0;
+}
+
+.terminal__icon {
+  border-radius: 50%;
+  display: inline-flex;
+  color: #44433f;
+  background: #807f79;
+  margin: 2px;
+}
+
+.terminal__input {
+  width: calc(80vw - 185px);
+  font-size: 16px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  margin: 0 0 0 5px;
+}
+
+.terminal__container {
+  padding: 0 20px;
+}
+
+.danger {
+  background: #e04e1d;
+}
