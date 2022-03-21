@@ -29,15 +29,15 @@ const terminalSlice = createSlice({
       if (state.currentPosition === state.buffer.length - 1) {
         state.currentCommand = state.buffer[state.currentPosition].command;
       } else {
-        state.currentCommand = state.buffer[state.currentPosition + 1].command;
         state.currentPosition = state.currentPosition + 1;
+        state.currentCommand = state.buffer[state.currentPosition].command;
       }
     },
     prevCommand(state) {
       if (state.currentPosition === 0) {
         state.currentCommand = state.buffer[state.currentPosition].command;
       } else {
-        state.currentCommand = state.buffer[state.currentPosition - 1].command;
+        state.currentCommand = state.buffer[state.currentPosition].command;
         state.currentPosition = state.currentPosition - 1;
       }
     },
