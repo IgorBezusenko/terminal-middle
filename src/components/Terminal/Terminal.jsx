@@ -9,7 +9,7 @@ import { TerminalHistory } from "./TerminalHistory";
 import TerminalError from "./TerminalError";
 
 const Terminal = () => {
-  const { history, buffer, currentCommand, error } = useSelector(
+  const { history, currentCommand, error } = useSelector(
     (state) => state.terminalReducer
   );
   const {
@@ -18,6 +18,7 @@ const Terminal = () => {
     prevCommand,
     clearHistory,
     setError,
+    clearCurrentCommand
   } = useAction();
   const [input, setInput] = useState("");
   const inputRef = useRef(null);
@@ -42,8 +43,10 @@ const Terminal = () => {
   const handleKeyDown = (e) => {
     switch (e.key) {
       case "Enter": {
+        if (!input) break;
         input.trim() === "clear" ? clearHistory() : requestCommand(input);
         setInput("");
+        clearCurrentCommand();
         break;
       }
       case "ArrowUp": {

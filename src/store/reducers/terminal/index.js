@@ -16,7 +16,7 @@ const terminalSlice = createSlice({
     addToBufferCommand(state, action) {
       state.buffer.push(action.payload);
       if (state.buffer.length > 1) {
-        state.currentPosition = state.currentPosition + 1;
+        state.currentPosition =  state.buffer.length-1;
       }
     },
     addToHistory(state, action) {
@@ -44,6 +44,9 @@ const terminalSlice = createSlice({
     setError(state, action) {
       state.error = action.payload;
     },
+    clearCurrentCommand(state){
+      state.currentCommand= ""
+    }
   },
 });
 
